@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Alert from "./components/alert/alert";
 import Container from "./components/container/container";
 import Input from "./components/input/input";

@@ -1,12 +1,21 @@
-import React from "react";
 import Container from "./container";
-import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-describe("<Container />", () => {
+import { render, screen } from "@testing-library/react";
+
+describe("Container", () => {
   test("matches snapshot", () => {
     const { asFragment } = render(<Container>children</Container>);
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  test("Structure", () => {
+    const testChildren = "Test children";
+
+    const { container } = render(<Container>{testChildren}</Container>);
+
+    expect(screen.getByText(testChildren)).toBeInTheDocument();
+    expect(container.firstChild).toHaveClass("container");
   });
 });

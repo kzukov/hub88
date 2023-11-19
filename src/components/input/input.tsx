@@ -2,7 +2,7 @@ import React from "react";
 
 type InputProps = {
   onChange?: (value: string) => void;
-  placeholder?: string | undefined;
+  placeholder?: string;
 };
 
 function Input(props: InputProps) {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> matches snapshot 1`] = `
+exports[`App Snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container"

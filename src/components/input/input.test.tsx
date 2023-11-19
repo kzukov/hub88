@@ -1,16 +1,27 @@
-import React from "react";
 import Input from "./input";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-describe("<Input />", () => {
-  test("matches snapshot", () => {
+describe("Input", () => {
+  test("Snapshot", () => {
     const { asFragment } = render(<Input />);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("fires onChange event if input changes", async () => {
+  test("Structure", () => {
+    const testPlaceholder = "Test placeholder";
+
+    const { container } = render(<Input placeholder={testPlaceholder} />);
+
+    const element = screen.getByPlaceholderText(testPlaceholder);
+
+    expect(element).toBeInTheDocument();
+
+    expect(container.firstChild).toHaveClass(`form-control`);
+  });
+
+  test("Event: onChange", async () => {
     const testvalue = "testvalue";
 
     render(<Input />);

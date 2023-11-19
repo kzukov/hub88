@@ -1,10 +1,8 @@
-import React, { ReactNode } from "react";
-
 export type TableData = { [key: string]: string };
 
 export type TableColumn = {
   key: string;
-  content: ReactNode;
+  content: string;
 };
 
 type TableProps = {

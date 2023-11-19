@@ -1,12 +1,11 @@
-import React from "react";
 import App from "./App";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MockedProvider } from "@apollo/client/testing";
 import { BY_COUNTRY_CODE } from "./queries/by-country-code";
 
-describe("<App />", () => {
-  test("matches snapshot", () => {
+describe("App", () => {
+  test("Snapshot", () => {
     const { asFragment } = render(
       <MockedProvider addTypename={false}>
         <App />
@@ -16,7 +15,18 @@ describe("<App />", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("makes successfull request", async () => {
+  test("Structure", () => {
+    render(
+      <MockedProvider addTypename={false}>
+        <App />
+      </MockedProvider>
+    );
+
+    expect(screen.getByText("Example input: EE")).toBeInTheDocument();
+    expect(screen.getByText("No data")).toBeInTheDocument();
+  });
+
+  test("Request: success", async () => {
     const mocks = [
       {
         request: {
@@ -46,7 +56,7 @@ describe("<App />", () => {
     expect(await screen.findByText("Estonia")).toBeInTheDocument();
   });
 
-  test("makes failed request", async () => {
+  test("Request: fail", async () => {
     const mocks = [
       {
         request: {
